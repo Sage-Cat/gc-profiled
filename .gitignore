@@ -1,0 +1,47 @@
+# Machine-specific configuration, cleanup scripts, state, and logs
+/profiles/
+/local/
+/private/
+/state/
+/logs/
+/backups/
+*.log
+*.log.*
+*.jsonl
+*.jsonl.*
+status.json
+*.sqlite*
+*.pid
+*.sock
+.env
+.env.*
+*.pem
+*.key
+credentials*
+secrets*
+
+# Agent instructions and session data remain local
+AGENTS.md
+AGENTS.override.md
+.codex/
+CODEX.md
+CLAUDE.md
+.claude/
+
+# Development artifacts
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage*
+htmlcov/
+dist/
+build/
+*.egg-info/
+.idea/
+.vscode/
+*.swp
+*~
+.DS_Store

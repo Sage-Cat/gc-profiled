@@ -1,0 +1,10 @@
+# Copy to your private profiles directory, then set real paths and enable.
+description = "Example build-cache cleanup"
+enabled = false
+command = ["/usr/local/libexec/clean-build-cache", "--older-than", "14d"]
+cwd = "/var/cache/example-build"
+every = "1d"
+timeout = "15m"
+
+[env]
+GC_KEEP_DAYS = "14"
