@@ -1,0 +1,33 @@
+@startuml
+!theme plain
+skinparam shadowing false
+skinparam componentStyle rectangle
+title gc-profiled: schedule, execute, report
+actor User
+file "Private TOML profiles\ncommand, interval, timeout" as profiles
+component "CLI\nvalidate / list / run / logs" as cli
+component "User systemd service" as service
+package "One daemon per state directory" {
+ component "Scheduler\nreload profiles each tick\nmaximum 4 simultaneous jobs" as scheduler
+ component "Job supervisor\nprocess group + timeout\nbounded output capture" as supervisor
+}
+component "External foreground scripts\nexplicit cleanup policy" as scripts
+database "Private state directory\natomic status.json\nrotating logs / requests / lock" as state
+component "Login HUD\nread-only GC status" as hud
+User --> profiles : configure
+User --> cli
+service --> scheduler : daemon lifecycle
+profiles --> scheduler
+cli --> state : queue request / inspect result
+profiles --> cli : validate
+scheduler --> supervisor : due or requested profile
+supervisor --> scripts : argv; no implicit shell
+scripts --> supervisor : output + exit status
+supervisor --> scheduler : completed / failed / timeout
+scheduler --> state : heartbeat and profile results
+state --> hud : fresh status snapshot
+note bottom of hud
+HUD never launches cleanup.
+An old success does not prove a live daemon.
+end note
+@enduml

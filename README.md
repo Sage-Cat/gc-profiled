@@ -6,6 +6,15 @@ timeout. Python 3.11+ standard library only. MIT licensed.
 
 Cleanup policy stays in your scripts. The daemon does not decide what to delete.
 
+## Documentation and screenshots
+
+[Safe first run and troubleshooting](docs/usage.md) · [Architecture](docs/architecture.md)
+
+![Isolated scheduler example showing profile results](docs/screenshots/profiles.png)
+
+This screenshot uses isolated example profiles with harmless commands. It shows
+scheduler results, not cleanup of a real user's files.
+
 ## Install
 
 ```sh
