@@ -158,3 +158,14 @@ Run `make check`. Tests execute harmless scripts in temporary directories.
 Keep real profiles, logs, secrets, and machine-specific scripts outside Git;
 ignored `local/`, `private/`, and `profiles/` directories are available for local
 work. Public examples live in `examples/` and are disabled by default.
+
+## Checks and releases
+
+```sh
+make check
+```
+
+The [CI workflow](.github/workflows/ci.yml) verifies each change. Successful pushes
+to the default branch publish a commit-addressed `build-<full-commit-SHA>` release
+with a source archive, applicable extension bundles, and SHA-256 checksums.
+See the [release process](https://github.com/Sage-Cat/workspace-state/blob/main/docs/publication.md) for artifact and verification details.
