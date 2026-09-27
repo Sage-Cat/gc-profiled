@@ -56,7 +56,7 @@ Set your own executable and working directory, test that script independently,
 then validate the profile before enabling it. Enabling a new profile makes it due
 immediately; validation alone never executes its command.
 
-The [README](../README.md#profiles) documents all profile fields and scheduling
+The [profile reference](reference.md#profiles) documents all profile fields and scheduling
 rules. To queue a configured enabled profile manually, use `gc-profiled run NAME`
 and then inspect `gc-profiled list` or `gc-profiled status` for its final result.
 
